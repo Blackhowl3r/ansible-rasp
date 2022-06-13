@@ -4,9 +4,5 @@ win:
       test:
 linux:
    hosts:
-      10.54.87.86
-   vars:
-      ansible_user: sdp
-      ansible_password: $harktank2Go
-      ansible_python_interpreter: /usr/local/bin/python3.9
+      linux_test:
 

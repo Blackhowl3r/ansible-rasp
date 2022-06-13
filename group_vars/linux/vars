@@ -1,0 +1,3 @@
+ansible_user: sdp
+ansible_password: "{{vault_sdp_password}}"
+ansible_python_interpreter: /usr/local/bin/python3.9
