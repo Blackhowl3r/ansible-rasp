@@ -1,0 +1,16 @@
+---
+- name: stuff
+  hosts: linux
+  debugger: on_failed
+  gather_facts: no
+  tasks:
+    - name: run script
+      ansible.builtin.expect:
+         echo: yes
+         command: ssh sdp@127.0.0.1
+         responses:
+            yes/no: "yes"
+            (?i)assword: "$harktank2Go"
+      register: command_output
+    - debug:
+       var: command_output.stdout_lines

@@ -1,0 +1,39 @@
+---
+- name: Install python
+  hosts: test
+  debugger: on_failed
+  gather_facts: no
+  tasks:
+    - name: Download python
+      win_get_url:
+         url: https://www.python.org/ftp/python/3.9.5/python-3.9.5-amd64.exe
+         dest: C:\temp\python-3.9.5.exe
+    - name: Install python
+      win_package:
+         path: C:\temp\python-3.9.5.exe
+         product_id: {843C07B6-040E-4E83-B244-5383247D70AB}
+         arguments:
+         - /quiet
+         - /passive
+         - InstallAllUsers=1
+         - TargetDir=C:\python39
+         - AssociateFiles=1
+         - PrependPath=1
+         - Shortcuts=1
+         - Include_doc=1
+         - Include_debug=1
+         - Include_dev=1
+         - Include_exe=1
+         - InstallLauncherAllUsers=1
+         - Include_lib=1
+         - Include_pip=1
+         - Include_test=1
+         - Include_tools=1
+         - Include_launcher=1
+         state: present
+      become: yes
+      become_user: SYSTEM
+      become_method: runas
+      register: command_output
+    - debug:
+       var: command_output.stdout_lines

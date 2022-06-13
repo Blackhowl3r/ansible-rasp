@@ -1,0 +1,14 @@
+---
+- name: vault pass test
+  hosts: win
+  debugger: on_failed
+  gather_facts: no
+#  vars_files:
+#     - ~/ansible/group_vars/vars.yaml
+#     - ~/ansible/group_vars/vaulted_vars.yaml
+  tasks:
+     - name: dir
+       win_shell: dir
+       register: command_output
+     - debug:
+        var: command_output.stdout_lines

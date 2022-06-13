@@ -1,0 +1,4 @@
+ansible_user: vutran1x
+ansible_password: "{{vault_vutran1x_password}}"
+ansible_shell_type: cmd
+shell_type: cmd
